@@ -1,0 +1,134 @@
+{
+  "currency": "MXN",
+  "categories": [
+    {
+      "id": "antojitos",
+      "name": "Antojitos",
+      "description": "Los clásicos de la casa."
+    },
+    {
+      "id": "tacos",
+      "name": "Tacos",
+      "description": "En tortilla de maíz o de harina."
+    },
+    {
+      "id": "tortas-y-mas",
+      "name": "Tortas y más",
+      "description": "Para el antojo grande."
+    }
+  ],
+  "products": [
+    {
+      "id": "quekas",
+      "category": "antojitos",
+      "name": "Quekas",
+      "price": 40,
+      "description": "Elige tu relleno: Pastor, Asado, Champiñón o Chorizo.",
+      "image": "images/productos/quekas.webp",
+      "imageSmall": "images/productos/quekas-sm.webp",
+      "available": true,
+      "options": {
+        "label": "Relleno",
+        "choices": ["Pastor", "Asado", "Champiñón", "Chorizo"]
+      }
+    },
+    {
+      "id": "sopes",
+      "category": "antojitos",
+      "name": "Sopes",
+      "price": 30,
+      "description": "Elige tu relleno: Pastor, Asado, Champiñón o Chorizo.",
+      "image": "images/productos/sopes.webp",
+      "imageSmall": "images/productos/sopes-sm.webp",
+      "available": true,
+      "options": {
+        "label": "Relleno",
+        "choices": ["Pastor", "Asado", "Champiñón", "Chorizo"]
+      }
+    },
+    {
+      "id": "gringas",
+      "category": "antojitos",
+      "name": "Gringas",
+      "price": 30,
+      "description": "Un clásico de nuestros antojitos.",
+      "image": "",
+      "available": true
+    },
+    {
+      "id": "mestizas",
+      "category": "antojitos",
+      "name": "Mestizas",
+      "price": 30,
+      "description": "Otra favorita de nuestros antojitos.",
+      "image": "",
+      "available": true
+    },
+    {
+      "id": "tacos-maiz",
+      "category": "tacos",
+      "name": "Tacos de maíz",
+      "price": 20,
+      "description": "Servidos en tortilla de maíz.",
+      "image": "images/productos/tacos.webp",
+      "imageSmall": "images/productos/tacos-sm.webp",
+      "available": true
+    },
+    {
+      "id": "tacos-harina",
+      "category": "tacos",
+      "name": "Tacos de harina",
+      "price": 25,
+      "description": "Servidos en tortilla de harina.",
+      "image": "",
+      "available": true
+    },
+    {
+      "id": "tortas",
+      "category": "tortas-y-mas",
+      "name": "Tortas",
+      "price": 40,
+      "description": "La torta de la casa.",
+      "image": "images/productos/tortas.webp",
+      "imageSmall": "images/productos/tortas-sm.webp",
+      "available": true
+    },
+    {
+      "id": "tortas-especiales",
+      "category": "tortas-y-mas",
+      "name": "Tortas especiales",
+      "price": 50,
+      "description": "Nuestra versión especial de la torta.",
+      "image": "",
+      "available": true
+    },
+    {
+      "id": "burritos",
+      "category": "tortas-y-mas",
+      "name": "Burritos",
+      "price": 120,
+      "description": "Al estilo de la casa.",
+      "image": "",
+      "available": true
+    },
+    {
+      "id": "nachos",
+      "category": "tortas-y-mas",
+      "name": "Nachos",
+      "price": 120,
+      "description": "Al estilo de la casa.",
+      "image": "images/productos/nachos.webp",
+      "imageSmall": "images/productos/nachos-sm.webp",
+      "available": true
+    },
+    {
+      "id": "huaraches",
+      "category": "tortas-y-mas",
+      "name": "Huaraches",
+      "price": 150,
+      "description": "Al estilo de la casa.",
+      "image": "",
+      "available": true
+    }
+  ]
+}

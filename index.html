@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>El Rincón Chiapaneco · Menú digital y pedidos por WhatsApp</title>
+    <meta
+      name="description"
+      content="Menú digital de El Rincón Chiapaneco: quekas, sopes, gringas, mestizas, tacos, tortas, burritos, nachos y huaraches. Arma tu pedido y envíalo por WhatsApp. Sabor tradicional en cada bocado."
+    />
+    <meta name="theme-color" content="#140e0b" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="El Rincón Chiapaneco" />
+    <meta property="og:title" content="El Rincón Chiapaneco · Menú digital" />
+    <meta property="og:description" content="Sabor tradicional en cada bocado. Mira el menú y pide por WhatsApp." />
+    <meta property="og:image" content="./images/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preload" as="image" href="./images/productos/tacos.webp" fetchpriority="high" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "El Rincón Chiapaneco",
+        "slogan": "Sabor tradicional en cada bocado",
+        "servesCuisine": ["Mexicana", "Chiapaneca", "Antojitos"],
+        "telephone": "+52 988 957 4541",
+        "priceRange": "$",
+        "acceptsReservations": false
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#menu">Saltar al menú</a>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="brand" href="#inicio" aria-label="El Rincón Chiapaneco, ir al inicio">
+          <img class="brand-mark" src="./favicon.svg" alt="" width="40" height="40" />
+          <span class="brand-text">
+            <span class="brand-script">El Rincón</span>
+            <span class="brand-strong">Chiapaneco</span>
+          </span>
+        </a>
+        <nav class="header-nav" aria-label="Principal">
+          <a href="#menu">Menú</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <button class="cart-button" type="button" data-open-cart aria-label="Ver mi pedido">
+          <svg class="icon" aria-hidden="true"><use href="#i-bag" /></svg>
+          <span class="cart-button-label">Mi pedido</span>
+          <span class="cart-badge" data-cart-count hidden>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-garland" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="hero-eyebrow rise">Cocina tradicional · Pedidos por WhatsApp</p>
+            <h1 id="hero-title" class="hero-title rise">
+              <span class="hero-title-script">El Rincón</span>
+              <span class="hero-title-main">Chiapaneco</span>
+            </h1>
+            <p class="hero-slogan rise">Sabor tradicional en cada bocado</p>
+            <div class="hero-actions rise">
+              <a class="btn btn-primary btn-lg" href="#menu">
+                Explorar menú
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-down" /></svg>
+              </a>
+              <button class="btn btn-ghost btn-lg" type="button" data-open-cart>
+                <svg class="icon" aria-hidden="true"><use href="#i-bag" /></svg>
+                Hacer pedido
+              </button>
+            </div>
+            <ul class="hero-steps rise" aria-label="Cómo pedir">
+              <li><span>1</span>Elige tus platillos</li>
+              <li><span>2</span>Revisa tu pedido</li>
+              <li><span>3</span>Envíalo por WhatsApp</li>
+            </ul>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="hero-glow"></div>
+            <figure class="hero-plate hero-plate-main">
+              <img src="./images/productos/tacos.webp" alt="" width="716" height="410" fetchpriority="high" />
+            </figure>
+            <figure class="hero-plate hero-plate-a">
+              <img src="./images/productos/quekas-sm.webp" alt="" width="283" height="150" loading="lazy" />
+            </figure>
+            <figure class="hero-plate hero-plate-b">
+              <img src="./images/productos/nachos-sm.webp" alt="" width="400" height="160" loading="lazy" />
+            </figure>
+            <div class="hero-price-tag">
+              <small>Tacos desde</small>
+              <strong data-hero-price>$20</strong>
+            </div>
+          </div>
+        </div>
+        <div class="textile-band" aria-hidden="true"></div>
+      </section>
+
+      <section class="menu-section" id="menu" aria-labelledby="menu-title">
+        <div class="container">
+          <header class="section-head">
+            <p class="section-kicker">Nuestro menú</p>
+            <h2 id="menu-title" class="section-title">¿Qué se te antoja hoy?</h2>
+            <p class="section-sub">Toca <strong>Agregar</strong>, ajusta cantidades y envía tu pedido por WhatsApp.</p>
+          </header>
+        </div>
+        <nav class="category-nav" aria-label="Categorías del menú">
+          <div class="container category-nav-inner" data-category-nav></div>
+        </nav>
+        <div class="container" data-menu-root aria-live="polite">
+          <div class="menu-loading">
+            <span class="spinner" aria-hidden="true"></span>
+            Cargando el menú…
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contacto" aria-labelledby="contact-title">
+        <div class="textile-band" aria-hidden="true"></div>
+        <div class="container">
+          <header class="section-head">
+            <p class="section-kicker">Visítanos o escríbenos</p>
+            <h2 id="contact-title" class="section-title">Ubicación y contacto</h2>
+          </header>
+          <div class="contact-grid" data-contact-root></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="footer-brand"><span class="brand-script">El Rincón</span> Chiapaneco</p>
+        <p class="footer-slogan">Sabor tradicional en cada bocado</p>
+        <p class="footer-legal">Precios en pesos mexicanos (MXN). <span data-year></span></p>
+      </div>
+    </footer>
+
+    <!-- Barra de navegación móvil -->
+    <nav class="bottom-nav" aria-label="Navegación rápida">
+      <a href="#inicio" data-nav="inicio">
+        <svg class="icon" aria-hidden="true"><use href="#i-home" /></svg>
+        <span>Inicio</span>
+      </a>
+      <a href="#menu" data-nav="menu">
+        <svg class="icon" aria-hidden="true"><use href="#i-utensils" /></svg>
+        <span>Menú</span>
+      </a>
+      <a href="#contacto" data-nav="contacto">
+        <svg class="icon" aria-hidden="true"><use href="#i-pin" /></svg>
+        <span>Contacto</span>
+      </a>
+      <button type="button" class="bottom-nav-cart" data-open-cart>
+        <span class="bottom-nav-cart-icon">
+          <svg class="icon" aria-hidden="true"><use href="#i-bag" /></svg>
+          <span class="cart-badge" data-cart-count hidden>0</span>
+        </span>
+        <span data-cart-total-short>Pedido</span>
+      </button>
+    </nav>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a
+      class="wa-float"
+      data-wa-float
+      href="https://wa.me/529889574541"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Pedir por WhatsApp"
+    >
+      <svg class="icon" aria-hidden="true"><use href="#i-whatsapp" /></svg>
+      <span class="wa-float-label">Pedir por WhatsApp</span>
+    </a>
+
+    <!-- Selector de relleno / cantidad -->
+    <dialog class="sheet" data-option-dialog aria-labelledby="option-title"></dialog>
+
+    <!-- Carrito -->
+    <dialog class="sheet drawer" data-cart-dialog aria-labelledby="cart-title"></dialog>
+
+    <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+
+    <noscript>
+      <div class="noscript">
+        Para armar tu pedido activa JavaScript, o escríbenos por WhatsApp:
+        <a href="https://wa.me/529889574541">988 957 4541</a>
+      </div>
+    </noscript>
+
+    <!-- Iconos -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="i-bag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 7h12l1 13H5L6 7Zm3 0a3 3 0 0 1 6 0" /></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M12 5v14M5 12h14" /></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M5 12h14" /></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3" /></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M6 6l12 12M18 6 6 18" /></symbol>
+      <symbol id="i-arrow-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14m-6-6 6 6 6-6" /></symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M19 12H5m6-6-6 6 6 6" /></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 11 12 4l9 7v9h-6v-6H9v6H3v-9Z" /></symbol>
+      <symbol id="i-utensils" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 3v8m-3-8v5a3 3 0 0 0 6 0V3M7 11v10M17 21V3c-2 1-3 4-3 8h3" /></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z" /><circle cx="12" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="2" /></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" /><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7v5l3 2" /></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5 9-10" /></symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5.1 5.2-1.4A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.2 8.2 0 1 1 7 3.9Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z" /></symbol>
+      <symbol id="i-image" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v14H4zM4 16l5-5 5 5 2-2 4 4" /></symbol>
+    </svg>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

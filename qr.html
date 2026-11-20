@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Generador de QR · El Rincón Chiapaneco</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#140e0b" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="qr-page">
+    <main class="container qr-main">
+      <header class="qr-head">
+        <a class="qr-back" href="./">← Volver al menú</a>
+        <p class="section-kicker">Herramienta del restaurante</p>
+        <h1 class="section-title">Código QR del menú</h1>
+        <p class="section-sub">
+          Genera el QR con la <strong>dirección pública real</strong> de tu menú. Descárgalo en PNG (alta resolución) o SVG
+          (ideal para imprenta) y colócalo en mesas, carteles o volantes.
+        </p>
+      </header>
+
+      <div class="qr-layout">
+        <form class="qr-form" data-qr-form novalidate>
+          <div class="field">
+            <label for="qr-url">Dirección pública del menú</label>
+            <input id="qr-url" name="url" type="url" inputmode="url" autocomplete="url" placeholder="https://tu-menu.com/" required />
+            <p class="qr-hint" data-url-hint>Si abriste esta página desde el sitio ya publicado, la dirección se completa sola.</p>
+            <p class="form-error" data-url-error role="alert" hidden></p>
+          </div>
+
+          <fieldset class="qr-choice">
+            <legend>Diseño</legend>
+            <label class="option-pill"><input type="radio" name="layout" value="card" checked /><span>Tarjeta con marca</span></label>
+            <label class="option-pill"><input type="radio" name="layout" value="code" /><span>Solo el código</span></label>
+          </fieldset>
+
+          <fieldset class="qr-choice" data-theme-field>
+            <legend>Fondo</legend>
+            <label class="option-pill"><input type="radio" name="theme" value="dark" checked /><span>Oscuro</span></label>
+            <label class="option-pill"><input type="radio" name="theme" value="light" /><span>Claro (ahorra tinta)</span></label>
+          </fieldset>
+
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Generar QR</button>
+
+          <div class="qr-downloads" data-downloads hidden>
+            <button class="btn btn-ghost btn-block" type="button" data-download="png">Descargar PNG</button>
+            <button class="btn btn-ghost btn-block" type="button" data-download="svg">Descargar SVG</button>
+            <button class="btn btn-ghost btn-block" type="button" data-print>Imprimir</button>
+          </div>
+
+          <ul class="qr-tips">
+            <li>Prueba el QR con tu teléfono antes de imprimir.</li>
+            <li>Tamaño mínimo recomendado al imprimir: <strong>3 × 3 cm</strong> para el código (mesas); 8 cm o más para carteles.</li>
+            <li>Para imprenta usa el <strong>SVG</strong>: se ve nítido a cualquier tamaño.</li>
+          </ul>
+        </form>
+
+        <section class="qr-preview" aria-live="polite">
+          <div class="qr-preview-frame" data-preview>
+            <p class="qr-empty">La vista previa aparecerá aquí.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="/src/qr/qrPage.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "name": "el-rincon-chiapaneco-menu",
+  "version": "1.0.0",
+  "description": "Menú digital y pedidos por WhatsApp de El Rincón Chiapaneco",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:e2e": "node scripts/e2e.mjs",
+    "check": "npm run test && npm run build && npm run test:e2e",
+    "qr": "node scripts/generate-qr.ts",
+    "assets": "node scripts/build-assets.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Williamcode2009/menu-digital-restaurante.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Williamcode2009/menu-digital-restaurante/issues"
+  },
+  "homepage": "https://github.com/Williamcode2009/menu-digital-restaurante#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/qrcode": "^1.5.6",
+    "jsqr": "^1.4.0",
+    "sharp": "^0.35.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource/lobster": "^5.3.0",
+    "qrcode": "^1.5.4"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  }
+}

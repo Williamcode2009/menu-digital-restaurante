@@ -1,0 +1,17 @@
+{
+  "name": "El Rincón Chiapaneco",
+  "slogan": "Sabor tradicional en cada bocado",
+  "siteUrl": "",
+  "whatsapp": {
+    "number": "529889574541",
+    "display": "988 957 4541",
+    "greeting": "¡Hola, El Rincón Chiapaneco! Me gustaría hacer un pedido."
+  },
+  "address": {
+    "line1": "",
+    "line2": "",
+    "references": "",
+    "mapsUrl": ""
+  },
+  "hours": []
+}
