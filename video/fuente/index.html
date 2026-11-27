@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>El Rincón Chiapaneco — Promo</title>
+<style>
+@font-face{font-family:'Lobster';src:url(node_modules/@fontsource/lobster/files/lobster-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Fraunces';src:url(node_modules/@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2) format('woff2');font-weight:100 900}
+@font-face{font-family:'DM Sans';src:url(node_modules/@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2) format('woff2');font-weight:100 1000}
+:root{
+  --bg:#140e0b;--surface:#221813;--surface-2:#2c1f18;--text:#fbefd9;--muted:#cdb89c;
+  --red:#d7261e;--red-deep:#7a1410;--yellow:#f6b81a;--orange:#ef7d1a;--green:#2f8f3a;--wa:#1faa53;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+body{font-family:'DM Sans',sans-serif;color:var(--text)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;
+  background:radial-gradient(120% 70% at 50% 35%,#2a1a12 0%,var(--bg) 60%)}
+.scene{position:absolute;inset:0;opacity:0;visibility:hidden}
+.abs{position:absolute}
+.script{font-family:'Lobster',cursive;font-weight:400}
+.display{font-family:'Fraunces',serif;font-weight:800;letter-spacing:-.02em;line-height:.95}
+.mono{font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+
+/* decor */
+#papel{position:absolute;left:0;right:0;top:-10px;height:210px;z-index:5;display:flex;flex-direction:column;gap:0}
+#papel .row{height:105px;background-repeat:repeat-x;background-size:auto 105px}
+#textil{position:absolute;left:0;right:0;bottom:0;height:46px;background:url(assets/textil.svg) repeat-x;background-size:auto 46px;z-index:6}
+#embers{position:absolute;inset:0;z-index:1;pointer-events:none}
+.ember{position:absolute;width:14px;height:14px;border-radius:50%;
+  background:radial-gradient(circle,#ff8a3a 0%,rgba(239,125,26,.5) 40%,transparent 70%);filter:blur(1px)}
+#progress{position:absolute;top:250px;right:64px;z-index:20;display:flex;align-items:center;gap:14px;
+  background:rgba(20,14,11,.75);border:2px solid rgba(251,239,217,.14);border-radius:999px;padding:12px 22px}
+#progress .dots{display:flex;gap:8px}
+#progress .dot{width:34px;height:8px;border-radius:4px;background:rgba(251,239,217,.2)}
+#progress .dot i{display:block;height:100%;width:0;border-radius:4px;background:var(--orange)}
+#progress span{font-size:26px;font-weight:800;color:var(--muted);letter-spacing:.06em}
+
+/* captions */
+#cap{position:absolute;left:70px;right:150px;top:1395px;z-index:30;min-height:220px}
+.capline{position:absolute;left:0;right:0;top:0;font-size:56px;font-weight:800;line-height:1.16;letter-spacing:-.01em}
+.capline .w{display:inline-block;opacity:.0;margin-right:.24em;transform:translateY(16px)}
+.capline .w.hl{color:var(--yellow)}
+.capline .wrap{display:inline;background:rgba(20,14,11,.82);box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  padding:6px 18px;border-radius:14px;line-height:1.5}
+
+/* cards */
+.card{position:absolute;border-radius:36px;overflow:hidden;background:var(--surface);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 3px rgba(251,239,217,.08)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;background:var(--yellow);color:var(--bg);border-radius:22px;padding:14px 28px;
+  font-family:'Fraunces',serif;font-weight:900;font-size:84px;line-height:1;box-shadow:0 18px 40px -14px rgba(0,0,0,.8)}
+.tag small{font-family:'DM Sans';font-size:30px;font-weight:800;letter-spacing:.08em;display:block;margin-bottom:4px}
+.chip{position:absolute;padding:16px 30px;border-radius:999px;background:var(--surface-2);border:3px solid var(--orange);
+  font-size:40px;font-weight:800;color:var(--text)}
+.kicker{font-size:30px;color:var(--orange)}
+
+/* scene 0 */
+#s0 .q{position:absolute;left:70px;right:70px;top:560px;font-size:150px}
+#s0 .q .ln{display:block;overflow:hidden;padding-bottom:12px}
+#s0 .q .ln span{display:inline-block}
+#s0 .q .accent{color:var(--orange);font-style:italic}
+
+/* scene 1 */
+#logo{position:absolute;left:50%;top:470px;width:330px;height:330px;margin-left:-165px}
+#s1 .name1{position:absolute;left:0;right:0;top:850px;text-align:center;font-size:150px;color:var(--yellow);
+  text-shadow:0 8px 0 var(--red-deep)}
+#s1 .name2{position:absolute;left:0;right:0;top:1030px;text-align:center;font-size:122px}
+#s1 .slogan{position:absolute;left:0;right:0;top:1200px;text-align:center;font-size:40px;color:var(--muted);font-weight:600}
+#s1 .rule{position:absolute;left:340px;width:400px;top:1185px;height:6px;border-radius:3px;background:var(--red);transform-origin:left}
+
+/* product scene common */
+.head{position:absolute;left:70px;top:330px}
+.head .kicker{margin-bottom:12px}
+.head .t{font-size:136px}
+.head .t em{color:var(--orange);font-style:italic}
+
+.row.big{padding:18px 34px;margin-bottom:16px;border-left:8px solid var(--orange)}
+.row.big .n{font-size:52px}
+.row.big .p{font-size:64px}
+/* phone */
+#phone{position:absolute;left:250px;top:330px;width:580px;height:1060px;border-radius:70px;background:#0b0705;
+  border:10px solid #3a2a20;box-shadow:0 50px 100px -30px #000;overflow:hidden}
+#phone .scr{position:absolute;inset:0;background:var(--bg);padding:70px 34px 30px}
+#phone .bar{font-family:'Lobster';font-size:46px;color:var(--yellow);margin-bottom:26px}
+.row{display:flex;align-items:center;gap:18px;background:var(--surface);border-radius:24px;padding:14px;margin-bottom:16px}
+.row img{width:110px;height:84px;object-fit:cover;border-radius:16px}
+.row .n{font-size:30px;font-weight:800;flex:1;line-height:1.1}
+.row .n small{display:block;font-size:22px;color:var(--muted);font-weight:600}
+.row .p{font-size:32px;font-weight:900;color:var(--yellow);font-family:'Fraunces'}
+.row .add{width:58px;height:58px;border-radius:50%;background:var(--red);color:#fff;font-size:42px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+#total{display:flex;justify-content:space-between;align-items:baseline;margin:24px 6px 22px;font-size:32px;font-weight:700;color:var(--muted)}
+#total b{font-family:'Fraunces';font-size:64px;color:var(--text)}
+#wabtn{height:110px;border-radius:30px;background:var(--wa);display:flex;align-items:center;justify-content:center;gap:16px;
+  font-size:38px;font-weight:800;color:#fff}
+#tap{position:absolute;width:120px;height:120px;border-radius:50%;border:6px solid rgba(255,255,255,.85);opacity:0}
+#cartBadge{position:absolute;right:34px;top:62px;width:72px;height:72px;border-radius:50%;background:var(--red);
+  font-size:36px;font-weight:900;display:flex;align-items:center;justify-content:center}
+#sent{position:absolute;left:34px;right:34px;top:420px;padding:40px;border-radius:30px;background:#0f2a17;border:3px solid var(--wa);
+  text-align:center;font-size:40px;font-weight:800;opacity:0}
+
+/* cta */
+#s7 .qrbox{position:absolute;left:300px;top:760px;width:480px;height:480px;background:var(--text);border-radius:40px;padding:42px;
+  box-shadow:0 0 0 10px var(--yellow),0 40px 90px -20px #000}
+#s7 .qrbox svg{width:100%;height:100%}
+#s7 .qrbox .mid{position:absolute;left:50%;top:50%;width:104px;height:104px;margin:-52px 0 0 -52px;border-radius:50%;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;border:6px solid var(--text)}
+#s7 .ttl{position:absolute;left:0;right:0;top:330px;text-align:center}
+#s7 .ttl .a{font-size:118px;color:var(--yellow);text-shadow:0 7px 0 var(--red-deep)}
+#s7 .ttl .b{font-size:96px;margin-top:6px}
+#s7 .pide{position:absolute;left:0;right:0;top:640px;text-align:center;font-size:38px;color:var(--muted)}
+#s7 .wa{position:absolute;left:200px;right:200px;top:1300px;height:120px;border-radius:999px;background:var(--wa);
+  display:flex;align-items:center;justify-content:center;gap:20px;font-size:54px;font-weight:900;color:#fff;
+  box-shadow:0 26px 50px -18px rgba(31,170,83,.7)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="embers"></div>
+  <div id="papel">
+    <div class="row" style="background-image:url(assets/papel-picado.svg)"></div>
+  </div>
+  <div id="textil"></div>
+  <div id="progress"><div class="dots"><div class="dot"><i></i></div><div class="dot"><i></i></div><div class="dot"><i></i></div></div><span id="pnum">0/3</span></div>
+
+  <!-- 0 Hook -->
+  <section class="scene" id="s0">
+    <div class="abs mono kicker" style="left:70px;top:470px;font-size:32px">El Rincón Chiapaneco · presenta</div>
+    <h1 class="q display">
+      <span class="ln"><span>¿Se te</span></span>
+      <span class="ln"><span>antoja algo</span></span>
+      <span class="ln"><span>con <i class="accent">sabor</i></span></span>
+      <span class="ln"><span>de verdad?</span></span>
+    </h1>
+  </section>
+
+  <!-- 1 Marca -->
+  <section class="scene" id="s1">
+    <svg id="logo" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="96" fill="#140e0b"/>
+      <circle cx="100" cy="100" r="86" fill="none" stroke="#f6b81a" stroke-width="7" stroke-dasharray="2 13" stroke-linecap="round"/>
+      <g transform="translate(100 100)"><g id="petals">
+        <path d="M0-8 C-22-30 -22-62 0-70 C22-62 22-30 0-8Z" fill="#d7261e"/>
+        <path d="M0-8 C-22-30 -22-62 0-70 C22-62 22-30 0-8Z" fill="#d7261e" transform="rotate(72)"/>
+        <path d="M0-8 C-22-30 -22-62 0-70 C22-62 22-30 0-8Z" fill="#d7261e" transform="rotate(144)"/>
+        <path d="M0-8 C-22-30 -22-62 0-70 C22-62 22-30 0-8Z" fill="#d7261e" transform="rotate(216)"/>
+        <path d="M0-8 C-22-30 -22-62 0-70 C22-62 22-30 0-8Z" fill="#d7261e" transform="rotate(288)"/>
+        <circle r="17" fill="#f6b81a"/><circle r="7" fill="#ef7d1a"/>
+      </g></g>
+    </svg>
+    <div class="name1 script">El Rincón</div>
+    <div class="name2 display">Chiapaneco</div>
+    <div class="rule"></div>
+    <div class="slogan">Sabor tradicional en cada bocado</div>
+  </section>
+
+  <!-- 2 Tacos -->
+  <section class="scene" id="s2">
+    <div class="head"><div class="mono kicker">01 · Tacos</div><div class="t display">Tacos<br><em>de la casa</em></div></div>
+    <div class="card" style="left:70px;top:690px;width:940px;height:560px"><img src="assets/tacos.webp" alt=""></div>
+    <div class="tag" id="t2a" style="left:110px;top:1140px"><small>MAÍZ · DESDE</small>$<span class="num">20</span></div>
+    <div class="tag" id="t2b" style="left:470px;top:1140px;background:var(--orange)"><small>HARINA</small>$25</div>
+  </section>
+
+  <!-- 3 Quekas y sopes -->
+  <section class="scene" id="s3">
+    <div class="head"><div class="mono kicker">02 · Antojitos</div><div class="t display">Quekas<br><em>&amp; sopes</em></div></div>
+    <div class="card" id="c3a" style="left:70px;top:690px;width:540px;height:400px"><img src="assets/quekas.webp" alt=""></div>
+    <div class="card" id="c3b" style="left:470px;top:900px;width:540px;height:400px"><img src="assets/sopes.webp" alt=""></div>
+    <div class="tag" id="t3a" style="left:110px;top:1020px;font-size:64px"><small>QUEKAS</small>$40</div>
+    <div class="tag" id="t3b" style="left:800px;top:820px;font-size:64px;background:var(--orange)"><small>SOPES</small>$30</div>
+    <div class="chip" id="ch0" style="left:600px;top:340px">Pastor</div>
+    <div class="chip" id="ch1" style="left:800px;top:440px">Asado</div>
+    <div class="chip" id="ch2" style="left:560px;top:540px">Champiñón</div>
+    <div class="chip" id="ch3" style="left:830px;top:600px">Chorizo</div>
+  </section>
+
+  <!-- 4 Tortas -->
+  <section class="scene" id="s4">
+    <div class="head"><div class="mono kicker">03 · Tortas</div><div class="t display">La torta<br><em>de la casa</em></div></div>
+    <div class="card" style="left:70px;top:690px;width:940px;height:560px"><img src="assets/tortas.webp" alt=""></div>
+    <div class="tag" id="t4a" style="left:110px;top:1140px"><small>DESDE</small>$40</div>
+    <div class="tag" id="t4b" style="left:460px;top:1140px;background:var(--orange);font-size:64px"><small>ESPECIAL</small>$50</div>
+  </section>
+
+  <!-- 5 Antojo grande -->
+  <section class="scene" id="s5">
+    <div class="head"><div class="mono kicker">Para el antojo</div><div class="t display" style="font-size:150px">GRANDE</div></div>
+    <div class="card" style="left:70px;top:540px;width:940px;height:340px"><img src="assets/nachos.webp" alt=""></div>
+    <div id="big" class="abs" style="left:70px;right:70px;top:920px">
+      <div class="row big"><div class="n">Nachos</div><div class="p">$120</div></div>
+      <div class="row big"><div class="n">Burritos</div><div class="p">$120</div></div>
+      <div class="row big"><div class="n">Huaraches</div><div class="p">$150</div></div>
+    </div>
+  </section>
+
+  <!-- 6 Pedido -->
+  <section class="scene" id="s6">
+    <div id="phone"><div class="scr">
+      <div class="bar">El Rincón Chiapaneco</div>
+      <div id="cartBadge"><span id="cnt">0</span></div>
+      <div class="row pr"><img src="assets/tacos.webp" alt=""><div class="n">Tacos de maíz<small>x3</small></div><div class="p">$60</div><div class="add">+</div></div>
+      <div class="row pr"><img src="assets/quekas.webp" alt=""><div class="n">Quekas<small>Pastor</small></div><div class="p">$40</div><div class="add">+</div></div>
+      <div class="row pr"><img src="assets/tortas.webp" alt=""><div class="n">Tortas<small>x1</small></div><div class="p">$40</div><div class="add">+</div></div>
+      <div id="total"><span>Total</span><b>$<span id="tot">0</span></b></div>
+      <div id="wabtn"><svg width="50" height="50" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2Z"/></svg><span class="lbl">Enviar pedido</span></div>
+      <div id="sent">✓ Pedido enviado<br><span style="font-size:30px;color:var(--muted);font-weight:600">por WhatsApp</span></div>
+    </div></div>
+    <div id="tap"></div>
+  </section>
+
+  <!-- 7 CTA -->
+  <section class="scene" id="s7">
+    <div class="ttl"><div class="a script">El Rincón</div><div class="b display">Chiapaneco</div></div>
+    <div class="pide mono">Escanea y pide por WhatsApp</div>
+    <div class="qrbox"><div id="qr"></div><div class="mid"><svg width="80" height="80" viewBox="0 0 200 200"><g transform="translate(100 100) scale(1.3)"><use href="#petals"/></g></svg></div></div>
+    <div class="wa"><svg width="62" height="62" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2Z"/></svg>988 957 4541</div>
+  </section>
+
+  <div id="cap"></div>
+</div>
+
+<script src="node_modules/gsap/dist/gsap.min.js"></script>
+<script src="data.js"></script>
+<script>
+const {DURS, LINES, QR, LEAD, GAP, TAIL} = window.DATA;
+document.getElementById('qr').innerHTML = QR;
+const HL = /^(Rincón|Chiapaneco|veinte|veinticinco|pastor|asado|champiñón|chorizo|cuarenta|nachos|burritos|huaraches|WhatsApp|verdad)/i;
+
+// scene start times (voice starts at sceneStart + 0.15)
+const starts = []; let t = LEAD;
+DURS.forEach(d => { starts.push(t); t += d + GAP; });
+const TOTAL = t - GAP + TAIL;
+window.TIMING = {starts, TOTAL, VOICE_OFFSET: 0.15};
+
+const tl = gsap.timeline({paused: true});
+const S = i => '#s' + i;
+
+// background embers (deterministic)
+const emb = document.getElementById('embers');
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+for (let i = 0; i < 26; i++) {
+  const e = document.createElement('div'); e.className = 'ember'; emb.appendChild(e);
+  const x = rnd() * 1080, sc = 0.6 + rnd() * 2.4, dur = 7 + rnd() * 8;
+  gsap.set(e, {x, y: 1950, scale: sc, opacity: 0});
+  const loops = Math.ceil(TOTAL / dur) + 1, off = rnd() * dur;
+  for (let k = 0; k < loops; k++) {
+    const st = k * dur - off;
+    tl.fromTo(e, {y: 1950, x, opacity: 0}, {y: -60, x: x + (rnd() - .5) * 260, duration: dur, ease: 'none',
+      keyframes: {opacity: [0, .9, .7, 0]}}, Math.max(0, st));
+  }
+}
+
+// papel picado sway
+gsap.set('#papel', {y: -240});
+tl.to('#papel', {y: 0, duration: .9, ease: 'back.out(1.6)'}, starts[1] - .1);
+tl.to('#papel .row', {skewX: 2, x: 8, duration: 1.4, yoyo: true, repeat: Math.ceil(TOTAL / 1.4), ease: 'sine.inOut'}, starts[1]);
+gsap.set('#textil', {yPercent: 100});
+tl.to('#textil', {yPercent: 0, duration: .6, ease: 'power3.out'}, starts[1]);
+
+// progress (scenes 2..4 = 1/3..3/3)
+gsap.set('#progress', {opacity: 0, y: -30});
+tl.to('#progress', {opacity: 1, y: 0, duration: .5, ease: 'back.out(2)'}, starts[2]);
+[2, 3, 4].forEach((sc, k) => {
+  tl.to(`#progress .dot:nth-child(${k + 1}) i`, {width: '100%', duration: .5, ease: 'power2.out'}, starts[sc] + .1);
+  tl.call(() => {}, null, starts[sc]);
+  tl.set('#pnum', {textContent: `${k + 1}/3`}, starts[sc] + .1);
+});
+tl.set('#pnum', {textContent: '0/3'}, 0);
+tl.to('#progress', {opacity: 0, y: -30, duration: .4}, starts[5]);
+
+// scene visibility helper
+function scene(i, build) {
+  const st = starts[i], en = (i + 1 < starts.length) ? starts[i + 1] : TOTAL + 1;
+  tl.set(S(i), {autoAlpha: 1}, st);
+  build(st, DURS[i] + GAP);
+  if (i + 1 < starts.length) tl.to(S(i), {autoAlpha: 0, scale: 1.04, duration: .35, ease: 'power2.in'}, en - .3);
+}
+
+// captions: words revealed proportionally to voice duration
+const cap = document.getElementById('cap');
+LINES.forEach((line, i) => {
+  const div = document.createElement('div'); div.className = 'capline';
+  const wrap = document.createElement('span'); wrap.className = 'wrap'; div.appendChild(wrap);
+  const words = line.split(/\s+/);
+  const spans = words.map(w => { const s = document.createElement('span'); s.className = 'w' + (HL.test(w.replace(/^[¿¡]/, '')) ? ' hl' : ''); s.textContent = w; wrap.appendChild(s); return s; });
+  cap.appendChild(div);
+  gsap.set(div, {autoAlpha: 0});
+  const v0 = starts[i] + .15, d = DURS[i];
+  const weights = words.map(w => w.length + 3), sum = weights.reduce((a, b) => a + b, 0);
+  tl.set(div, {autoAlpha: 1}, v0 - .05);
+  let acc = 0;
+  spans.forEach((s, k) => { tl.to(s, {opacity: 1, y: 0, duration: .18, ease: 'power2.out'}, v0 + acc / sum * d * .92); acc += weights[k]; });
+  if (i < LINES.length - 1) tl.to(div, {autoAlpha: 0, duration: .2}, starts[i + 1] - .15);
+});
+
+// 0 — hook
+scene(0, st => {
+  tl.from('#s0 .kicker', {opacity: 0, x: -40, duration: .5}, st + .05);
+  tl.from('#s0 .q .ln span', {yPercent: 110, duration: .6, stagger: .22, ease: 'power4.out'}, st + .1);
+  tl.fromTo('#s0 .accent', {color: '#fbefd9'}, {color: '#ef7d1a', duration: .4}, st + 1.1);
+});
+
+// 1 — marca
+scene(1, st => {
+  tl.from('#logo', {scale: 0, rotation: -200, duration: 1, ease: 'back.out(1.5)'}, st + .1);
+  tl.to('#petals', {rotation: 360, transformOrigin: '50% 50%', duration: 8, ease: 'none'}, st + .1);
+  tl.from('#s1 .name1', {y: 80, opacity: 0, duration: .7, ease: 'back.out(2)'}, st + .5);
+  tl.from('#s1 .name2', {y: 80, opacity: 0, duration: .7, ease: 'back.out(2)'}, st + .7);
+  tl.from('#s1 .rule', {scaleX: 0, duration: .6, ease: 'power3.out'}, st + 1.1);
+  tl.from('#s1 .slogan', {opacity: 0, y: 20, duration: .6}, st + 1.4);
+});
+
+function productIn(sel, st) {
+  tl.from(`${sel} .head .kicker`, {opacity: 0, x: -40, duration: .4}, st);
+  tl.from(`${sel} .head .t`, {y: 70, opacity: 0, duration: .6, ease: 'back.out(1.7)'}, st + .08);
+  tl.from(`${sel} .card`, {y: 260, rotation: 4, opacity: 0, duration: .8, stagger: .15, ease: 'expo.out'}, st + .15);
+  tl.fromTo(`${sel} .card img`, {scale: 1.0}, {scale: 1.14, duration: 4.5, ease: 'none'}, st + .15);
+}
+function stamp(sel, at) { tl.from(sel, {scale: 2.2, rotation: -14, opacity: 0, duration: .45, ease: 'back.out(2.6)'}, at); }
+
+// 2 — tacos
+scene(2, st => {
+  productIn('#s2', st);
+  const v = st + .15, d = DURS[2];
+  stamp('#t2a', v + d * .32);
+  tl.from('#t2a .num', {textContent: 0, duration: .6, snap: {textContent: 1}, ease: 'power2.out'}, v + d * .32);
+  stamp('#t2b', v + d * .72);
+});
+
+// 3 — quekas y sopes
+scene(3, st => {
+  productIn('#s3', st);
+  const v = st + .15, d = DURS[3];
+  stamp('#t3a', v + .5); stamp('#t3b', v + .9);
+  [0, 1, 2, 3].forEach(k => tl.from('#ch' + k, {scale: 0, opacity: 0, duration: .4, ease: 'back.out(3)'}, v + d * (.55 + k * .1)));
+});
+
+// 4 — tortas
+scene(4, st => {
+  productIn('#s4', st);
+  const v = st + .15, d = DURS[4];
+  stamp('#t4a', v + d * .55); stamp('#t4b', v + d * .8);
+});
+
+// 5 — antojo grande
+scene(5, st => {
+  productIn('#s5', st);
+  const v = st + .15, d = DURS[5];
+  tl.from('#s5 .head .t', {letterSpacing: '0.3em', duration: .8, ease: 'expo.out'}, st);
+  document.querySelectorAll('#big .row').forEach((r, k) => tl.from(r, {x: -900, duration: .5, ease: 'expo.out'}, v + d * (.48 + k * .14)));
+});
+
+// 6 — pedido
+scene(6, st => {
+  const v = st + .15, d = DURS[6];
+  tl.from('#phone', {y: 900, rotation: 8, duration: .8, ease: 'expo.out'}, st);
+  const rows = document.querySelectorAll('#phone .row.pr');
+  const totals = [60, 100, 140], adds = rows.length;
+  rows.forEach((r, k) => {
+    const at = v + .5 + k * .55;
+    tl.from(r, {x: 600, opacity: 0, duration: .4, ease: 'power3.out'}, st + .3 + k * .1);
+    const btn = r.querySelector('.add');
+    const rect = {x: 250 + 10 + 34 + 512 - 58 - 14 - 5, y: 330 + 10 + 0};
+    tl.to(btn, {scale: .8, duration: .08, yoyo: true, repeat: 1}, at);
+    tl.to('#cartBadge', {scale: 1.35, duration: .1, yoyo: true, repeat: 1}, at + .05);
+    tl.set('#cnt', {textContent: k + 1}, at + .05);
+    tl.to('#tot', {textContent: totals[k], duration: .35, snap: {textContent: 1}}, at + .05);
+  });
+  const press = v + d * .62;
+  tl.set('#tap', {left: 480, top: 1080, scale: .4, opacity: 1}, press - .01);
+  tl.to('#tap', {scale: 1.5, opacity: 0, duration: .5, ease: 'power2.out'}, press);
+  tl.to('#wabtn', {scale: .94, duration: .1, yoyo: true, repeat: 1}, press);
+  tl.set('#wabtn .lbl', {textContent: '¡Pedido enviado! ✓'}, press + .2);
+  tl.fromTo('#wabtn', {scale: .9}, {scale: 1, duration: .45, ease: 'back.out(3)', immediateRender: false}, press + .2);
+  tl.fromTo('#phone', {boxShadow: '0 0 0 0 rgba(31,170,83,0)'}, {boxShadow: '0 0 0 18px rgba(31,170,83,.35)', duration: .5, yoyo: true, repeat: 1, immediateRender: false}, press + .2);
+});
+
+// 7 — CTA
+scene(7, st => {
+  tl.from('#s7 .ttl .a', {y: -60, opacity: 0, duration: .6, ease: 'back.out(2)'}, st);
+  tl.from('#s7 .ttl .b', {y: 60, opacity: 0, duration: .6, ease: 'back.out(2)'}, st + .12);
+  tl.from('#s7 .pide', {opacity: 0, duration: .5}, st + .4);
+  tl.from('#s7 .qrbox', {scale: .3, rotation: -12, opacity: 0, duration: .8, ease: 'back.out(1.6)'}, st + .3);
+  tl.from('#s7 .wa', {y: 120, opacity: 0, duration: .6, ease: 'back.out(1.8)'}, st + 2.2);
+  tl.to('#s7 .wa', {scale: 1.05, duration: .45, yoyo: true, repeat: 5, ease: 'sine.inOut'}, st + 3);
+});
+
+tl.set({}, {}, TOTAL);
+window.seek = s => { tl.seek(s, false); };
+window.ready = document.fonts.ready.then(() => Promise.all([...document.images].map(i => i.decode().catch(() => {}))));
+</script>
+</body>
+</html>
